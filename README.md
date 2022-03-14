@@ -8,5 +8,9 @@
 </p>
 
 Requirement:
-    PHP 8.x
-    MongoDB 4.x
+<ul>
+    <li>PHP 8.x</li>
+    <li>MongoDB 4.x</li>
+</ul>
+    
+    
