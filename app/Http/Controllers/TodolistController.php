@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use DateTime;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TodoMailer;
+
 class TodolistController extends Controller
 {
     public function index(Request $request) {
@@ -28,7 +31,8 @@ class TodolistController extends Controller
             'detail' => $request->description, 
             'todo_at' => $in_todo_at->format('Y-m-d H:i:s'),
             'is_finish' => 0,
-            'is_finish_at' => null
+            'is_finish_at' => null,
+            'is_notified' => 0
         ]);
         $todolist->save();
         return response()->json('todolist created!');

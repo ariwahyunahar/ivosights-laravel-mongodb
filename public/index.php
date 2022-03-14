@@ -4,7 +4,11 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
-
+function ddd($par = []){
+    echo '<pre>';
+    print_r($par);
+    die('</pre>');
+}
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
