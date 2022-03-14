@@ -16,8 +16,9 @@ class TodolistController extends Controller
     public function index(Request $request) {
         $skip = $request->page*$request->size;
         if($request->title){
-            $count = Todolist::whereRaw("name like '%".$request->title."%'")->count();
-            $todolists = Todolist::whereRaw("name like '%".$request->title."%'")->orderBy("todo_at", "desc")->skip($skip)->take($request->size)->get();
+            // $count = DB::collection('todolists')->where("name", 'LIKE', "'%".$request->title."%'")->count();
+            $count = Todolist::where('name','regexp',"/.*$request->title/i")->count();
+            $todolists = Todolist::where('name','regexp',"/.*$request->title/i")->orderBy("todo_at", "desc")->skip($skip)->take($request->size)->get();
         }else{
             $count = Todolist::orderBy("todo_at", "desc")->count();
             $todolists = Todolist::orderBy("todo_at", "desc")->skip($skip)->take($request->size)->get();
@@ -68,14 +69,14 @@ class TodolistController extends Controller
      
     public function gettodo() {
         $todolists = Todolist::where('is_finish', '=', 0)
-            ->whereDate('todo_at', '>=', Carbon::now())
+            ->whereDate('todo_at', '>=', Carbon::now()->toDateTimeString())
             ->orderBy("todo_at", "desc")
             ->get();
         return response()->json($todolists);
     }
     public function gettodopast() {
         $todolists = Todolist::where('is_finish', '=', 0)
-            ->whereDate('todo_at', '<', Carbon::now())
+            ->whereDate('todo_at', '<', Carbon::now()->toDateTimeString())
             ->orderBy("todo_at", "desc")
             ->get();
         return response()->json($todolists);
