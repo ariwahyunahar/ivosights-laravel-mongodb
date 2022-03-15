@@ -12,5 +12,10 @@ Requirement:
     <li>PHP 8.x</li>
     <li>MongoDB 4.x</li>
 </ul>
+
+Run Job for Mail Notification:
+<ul>
+    <li>php artisan users:todo-reminder</li>
+</ul>
     
     
