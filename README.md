@@ -13,9 +13,11 @@ Requirement:
     <li>MongoDB 4.x</li>
 </ul>
 
-Run Job for Mail Notification:
+Requirement Installation:
 <ul>
-    <li>php artisan users:todo-reminder</li>
+    <li>Create .env from .env.example</li>
+    <li>Setting mailer</li>
+    <li>set value "MAIL_TESTING_TO" as email receiver</li>
+    <li>Run Job : <b>php artisan users:todo-reminder</b></li>
 </ul>
-    
-    
+

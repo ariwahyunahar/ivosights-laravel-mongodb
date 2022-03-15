@@ -114,4 +114,7 @@ return [
         ],
     ],
 
+    'to_for_testing' => env('MAIL_TESTING_TO', 'ari.wahyu.nahar@gmail.com')
+    
+
 ];

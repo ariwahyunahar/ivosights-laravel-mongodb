@@ -32,14 +32,13 @@ class TodoReminder extends Command
      */
     public function handle()
     {
-        
         $todolists = Todolist::where('todo_at', '<=', Carbon::now()->add(15, 'minute')->toDateTimeString())
                             ->where('todo_at', '>', Carbon::now()->toDateTimeString())
                             ->where('is_notified', 0)
                             ->get();
         if($todolists->count()){
             foreach($todolists as $isi){
-                Mail::to('ari.wahyu.nahar@gmail.com')->send(new TodoMailer($isi));
+                Mail::to(config('mail.to_for_testing'))->send(new TodoMailer($isi));
                 // if(!\Illuminate\Support\Facades\Mail::failures()){
                 //     Todolist::where('_id', $isi->_id)
                 //         ->update([
